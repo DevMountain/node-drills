@@ -21,7 +21,7 @@ Create CRUD endpoints on an array of objects.
 - Use `req.query` to `GET` all objects matching the query parameter.
 - Use `req.params` to `DELETE` one object
 - Use `req.query` to `DELETE` all objects matching the query parameter. 
-- Use `req.params` to `PUT` (update) one object
+- Use `req.params` to `PUT` (update) one object.
 - Use `req.query` to `PUT` (update) all objects matching the query parameter. 
 
 ### App 6 - Serve Static Files
