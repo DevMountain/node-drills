@@ -8,13 +8,13 @@ Create a package.json file and install/save dependencies (like express, body-par
 Set up an express server that listens on port 3000.
 
 ### App 3 - Get and post
-Create an array of items (movies, names, cars, etc) and create `GET` and `POST` endpoints for that array. Send the results with an `ok` status code.
+Create `GET` and `POST` endpoints for the items array. Send the results with an `ok` status code.
 
 ### App 4 - JS files
-Create an array of objects in the data.js file. Require this in your index.js file and create `GET` and `POST` endpoints. Send the results with an `ok` status code.
+Export the data in the data.js file and require it in your index.js file. Create `GET` and `POST` endpoints for the data and send the results with an `ok` status code.
 
 ### App 5 - CRUD, Queries and params
-Create CRUD endpoints on an array of objects. 
+Create CRUD endpoints on the supplied data.
 - `GET` all objects.
 - `POST` a new object.
 - Use `req.params` to `GET` one object.
