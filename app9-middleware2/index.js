@@ -4,15 +4,6 @@ var session = require('express-session');
 var port = 3000;
 var data = require('./data.js')
 
-var app = express();
-
-var requireAuth = function(req, res, next) {
-  if (!req.session.currentUser) {
-    return res.status(403).end();
-  }
-  return next();
-}
-
 app.use(bodyParser.json());
 
 app.use(session({
@@ -21,22 +12,60 @@ app.use(session({
   resave: true
 }));
 
-app.use(function(req, res, next) {
-	console.log(req.session);
-	next();
-})
+var app = express();
 
+// Define your middleware function here (or in a separate middleware file if you like)
+var requireAuth = function(req, res, next) {
+  if (!req.session.currentUser) {
+    return res.status(403).end();
+  }
+  return next();
+}
+
+// Do not touch this endpoint
 app.post('/login', function(req, res, next) {
 	req.session.currentUser = req.body.username;
-	res.status(200).send('logged in');
+	if (req.body.username) {
+		res.status(200).send('logged in as ' + req.body.username);
+	} else {
+		res.status(200).send('please provide a username');
+	}
+	
 })
+
 
 app.get('/data', function(req, res, next) {
 	res.status(200).json(data);
 })
 
+app.get('/data/:year', function(req, res, next) {
+	var year = req.params.year;
+	var results = data.filter(function(el) {
+		return el.year == year;
+	})
+	res.status(200).json(results);
+})
+
 app.post('/data', requireAuth, function(req, res, next) {
 	data.push(req.body);
+	res.status(200).json(data);
+})
+
+app.put('/data/:year', requireAuth, function(req, res, next) {
+	var year = parseInt(req.params.year);
+	data.filter(function(el, idx, arr) {
+		if (el.year === year) {
+			arr[idx] = req.body;
+		}
+	})
+	res.status(200).json(data);
+})
+
+app.delete('/data/:year', requireAuth, function(req, res, next) {
+	var year = parseInt(req.params.year);
+	data = data.filter(function(el) {
+		return el.year !== year;
+	})
 	res.status(200).json(data);
 })
 
