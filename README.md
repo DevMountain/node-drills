@@ -40,4 +40,4 @@ Use express sessions to save data to the session using a `POST` endpoint and acc
 - Test your middleware. If you try to hit the admin endpoints without logging in first, you should see an empty response and your `forbidden` or `unauthorized` status code. If you log in first, the request will be completed.
 
 ### App 10 - The Whole Shebang
-If you have time, create a whole front to back app that uses and Angular front end rather than Postman.
+If you have time, create a whole front to back app that uses an Angular front end rather than Postman.
