@@ -14,15 +14,15 @@ Create `GET` and `POST` endpoints for the items array. Send the results with an 
 Export the data in the data.js file and require it in your index.js file. Create `GET` and `POST` endpoints for the data and send the results with an `ok` status code.
 
 ### App 5 - CRUD, Queries and params
-Create CRUD endpoints on the supplied data.
-- `GET` all objects.
-- `POST` a new object.
-- Use `req.params` to `GET` one object.
-- Use `req.query` to `GET` all objects matching the query parameter.
-- Use `req.params` to `DELETE` one object.
-- Use `req.query` to `DELETE` all objects matching the query parameter. 
-- Use `req.params` to `PUT` (update) one object.
-- Use `req.query` to `PUT` (update) all objects matching the query parameter. 
+
+Create CRUD endpoints on the supplied data.  You will want to use it, and mimic it's format when adding new data.
+
+- 1) Create an endpoint to `GET` all objects.
+- 2) Create an endpoint to `POST` a new object.
+- 3) Create an endpoint to get one item by index/id. Hint: Use `req.params`
+- 1b) Update endpoint #1 to look for query parameters and get only matching items.
+- 4) Create an endpoint to remove an object by index/id. Hint) Use `req.params`
+- 5) Create an endpoint that can update one object by id. Hint: Use `req.query` to determine which properties to update
 
 ### App 6 - Serve Static Files
 Use express to serve the static files in the public folder.
@@ -31,9 +31,12 @@ Use express to serve the static files in the public folder.
 Use express sessions to save data to the session using a `POST` endpoint and access that saved data using a `GET` endpoint.
 
 ### App 8 - Middleware
-- Create a top-level middleware function that is used on every request (keyword `USEd`). This function can be as simple as logging something to the console.
+- Create a top-level middleware function that is used on every request (keyword `USE`). This function can be as simple as logging something to the console.
   - Create two endpoints to test that your middleware function runs on every request and that the endpoints work properly.
-- Create a middleware function to restrict `POST` access to an array to logged in users. 
+  
+### App 9 - Middleware 2
+- Create a middleware function that checks to see if there is a current user logged in (see the `login` endpoint to see what happens when someone logs in). If there is no user logged in, end the function. If there is a user, return next.
+- Apply that middleware to all routes dealing with `admin` things.
 
-### App 9 - The Whole Shebang
+### App 10 - The Whole Shebang
 If you have time, create a whole front to back app that uses and Angular front end rather than Postman.
