@@ -1,12 +1,11 @@
 var express = require('express');
-var bodyParser = require('body-parser');
 var session = require('express-session');
 var port = 3000;
 var data = require('./data.js')
 
 var app = express();
 
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.use(session({
   secret: 'qwertyuiop',
