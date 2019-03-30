@@ -2,7 +2,7 @@
 Each standalone app below builds on the previous app(s). The instructions given are only for the current app, with the assumption that you don't need repeat instructions for the previous steps.
 
 ### App 1 - Setup
-Create a package.json file and install/save dependencies (like express, body-parser, etc).
+Create a package.json file and install/save dependencies.
 
 ### App 2 - Listen
 Set up an express server that listens on port 3000.
